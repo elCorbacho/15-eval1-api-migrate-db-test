@@ -1,0 +1,106 @@
+[
+    {
+        "id": 2,
+        "nombre": "App de Reservas2233",
+        "fecha_inicio": "2025-02-05",
+        "estado": "En espera",
+        "responsable": "Carlos Pérez",
+        "monto": "22000"
+    },
+    {
+        "id": 9,
+        "nombre": "Intranet Corporativa",
+        "fecha_inicio": "2025-08-01",
+        "estado": "Activo",
+        "responsable": "Patricia Soto",
+        "monto": 32000
+    },
+    {
+        "id": 10,
+        "nombre": "Sistema de Reportes",
+        "fecha_inicio": "2025-08-20",
+        "estado": "Finalizado",
+        "responsable": "Andrés Vera",
+        "monto": 12000
+    },
+    {
+        "id": 11,
+        "nombre": "555",
+        "fecha_inicio": "2025-07-01",
+        "estado": "555",
+        "responsable": "55",
+        "monto": "555"
+    },
+    {
+        "id": 12,
+        "nombre": "666",
+        "fecha_inicio": "2025-07-04",
+        "estado": "66",
+        "responsable": "666",
+        "monto": "777"
+    },
+    {
+        "id": 13,
+        "nombre": "test",
+        "fecha_inicio": "2025-07-07",
+        "estado": "testeado",
+        "responsable": "ac",
+        "monto": "11212121"
+    },
+    {
+        "id": 14,
+        "nombre": "6565",
+        "fecha_inicio": "2025-07-01",
+        "estado": "656",
+        "responsable": "56565",
+        "monto": "6565"
+    },
+    {
+        "id": 15,
+        "nombre": "789698769876",
+        "fecha_inicio": "2025-06-30",
+        "estado": "786987",
+        "responsable": "698769876",
+        "monto": "9876"
+    },
+    {
+        "id": 16,
+        "nombre": "768587658765",
+        "fecha_inicio": "2025-07-15",
+        "estado": "87658765",
+        "responsable": "87658765",
+        "monto": "87657685"
+    },
+    {
+        "id": 17,
+        "nombre": "TEST",
+        "fecha_inicio": "2025-07-05",
+        "estado": "TEST",
+        "responsable": "TEST",
+        "monto": "111111"
+    },
+    {
+        "id": 18,
+        "nombre": "testing final",
+        "fecha_inicio": "2025-07-27",
+        "estado": "activo",
+        "responsable": "ac",
+        "monto": "1922199"
+    },
+    {
+        "id": 19,
+        "nombre": "434",
+        "fecha_inicio": "2025-07-18",
+        "estado": "activo",
+        "responsable": "ac",
+        "monto": "98898"
+    },
+    {
+        "id": 20,
+        "nombre": "Nuevo Proyecto",
+        "fecha_inicio": "2025-08-01",
+        "estado": "activo",
+        "responsable": "Juan Pérez",
+        "monto": 150000
+    }
+]
