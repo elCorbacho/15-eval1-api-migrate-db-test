@@ -7,13 +7,38 @@ use App\Models\Proyecto;
 
 class ProyectoController extends Controller
 {
-    // Método innecesario eliminado para evitar conflicto de nombres
 
 
+// Funcion para obtener todos los proyectos y devolver vista web GET
+    public function get(Request $request)
+    {
+        $proyectos = Proyecto::all();
 
-//----------------------------------------OK
-//CONTROLADOR PARA CREAR PROYECTO CON POST EN JSON
-//----------------------------------------
+        if ($request->expectsJson()) {
+            return response()->json($proyectos, 200);
+        }
+
+        return view('obtener_proyectos', compact('proyectos'));
+    }
+
+
+// Funcion para buscar un proyecto por ID y devolver vista web GET ID
+    public function buscarProyecto(Request $request)
+    {
+        $proyecto = null;
+        $notFound = false;
+
+        if ($request->has('id')) {
+            $proyecto = Proyecto::find($request->input('id'));
+            if (!$proyecto) {
+                $notFound = true;
+            }
+        }
+        return view('buscar_proyecto', compact('proyecto', 'notFound'));
+    }
+
+
+//Funcion  POST para crear un nuevo proyecto
     public function post(Request $request)
     {
         $proyecto = new Proyecto();
@@ -26,28 +51,25 @@ class ProyectoController extends Controller
 
         return redirect()->back()->with('proyecto_creado', $proyecto);
     }
-//----------------------------------------
 
 
+// Funciones para gestionar el PATCH de actualizacion del proyecto
+    // A --> funcion para buscar un proyecto por ID y mostrar resultado en vista
+    public function buscarEditar(Request $request)
+    {
+        $proyecto = null;
+        $notFound = false;
 
-public function get(Request $request)
-{
-    $proyectos = Proyecto::all();
-
-    if ($request->expectsJson()) {
-        return response()->json($proyectos, 200);
+        if ($request->has('id')) {
+            $proyecto = Proyecto::find($request->input('id'));
+            if (!$proyecto) {
+                $notFound = true;
+            }
+        }
+        return view('buscar_editar', compact('proyecto', 'notFound'));
     }
 
-    return view('obtener_proyectos', compact('proyectos'));
-}
-
-
-
-
-
-//----------------------------------------OK
-//CONTROLADOR PARA ACTUALIZAR PROYECTO CON PATCH EN JSON
-//----------------------------------------
+    // B --> Funcion para Ejecutar el PATCH de actualización del proyecto y devolver vista web
     public function update(Request $request, $id)
     {
         $proyecto = Proyecto::find($id);
@@ -63,9 +85,8 @@ public function get(Request $request)
 
         return redirect('/proyectos')->with('success', 'Proyecto actualizado correctamente');
     }
-//----------------------------------------OK
-// FUNCION PARA EDITAR UN PROYECTO EXISTENTE y MOSTRAR VISTA DESDE JSON
-// ----------------------------------------
+
+    // C --> Funcion para editar un proyecto existente recibiendo directamente la ID en la ruta WEB (sin uso)
     public function edit($id)
     {
         $proyecto = Proyecto::find($id);
@@ -74,28 +95,8 @@ public function get(Request $request)
         }
         return view('editar_proyecto', compact('proyecto'));
     }
-//----------------------------------------OK
-// ----------------------------------------OK
-// FUNCION PARA BUSCAR UN PROYECTO POR ID y MOSTRAR VISTA DESDE JSON
-// ----------------------------------------
-    public function buscarEditar(Request $request)
-    {
-        $proyecto = null;
-        $notFound = false;
-
-        if ($request->has('id')) {
-            $proyecto = Proyecto::find($request->input('id'));
-            if (!$proyecto) {
-                $notFound = true;
-            }
-        }
-        return view('buscar_editar', compact('proyecto', 'notFound'));
-    }
-//----------------------------------------
 
 
-
-//----------------------------------------OK
 //METODO DELETE POR ID CON JSON
     public function delete(Request $request)
     {
@@ -107,43 +108,7 @@ public function get(Request $request)
         $proyecto->delete();
         return redirect()->back()->with('success', 'Proyecto eliminado');
     }
-//----------------------------------------
 
 
-
-//----------------------------------------
-//METODO GET POR ID CON JSON
-//----------------------------------------
-    public function show($id)
-    {
-        $proyecto = Proyecto::find($id);
-        if ($proyecto) {
-            return response()->json($proyecto, 200);
-        } else {
-            return response()->json(['error' => 'Proyecto no encontrado'], 404);
-        }
-    }
-//----------------------------------------
-
-
-
-
-// ----------------------------------------OKOKOK
-// MÉTODO PARA BUSCAR UN PROYECTO POR ID y MOSTRAR VISTA DESDE JSON
-// ----------------------------------------
-    public function buscarProyecto(Request $request)
-    {
-        $proyecto = null;
-        $notFound = false;
-
-        if ($request->has('id')) {
-            $proyecto = Proyecto::find($request->input('id'));
-            if (!$proyecto) {
-                $notFound = true;
-            }
-        }
-        return view('buscar_proyecto', compact('proyecto', 'notFound'));
-    }
-//----------------------------------------
 
 }

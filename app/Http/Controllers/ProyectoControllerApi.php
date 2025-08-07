@@ -1,28 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Proyecto;
 
 class ProyectoControllerApi extends Controller
 {
-        public function proyecto($id, $nombre, $fecha_inicio, $estado, $responsable, $monto)
-    {
-        $proyecto = new Proyecto();
-        $proyecto->id = $id;
-        $proyecto->nombre = $nombre;
-        $proyecto->fecha_inicio = $fecha_inicio;
-        $proyecto->estado = $estado;
-        $proyecto->responsable = $responsable;
-        $proyecto->monto = $monto;
-        dd($proyecto);
-    }
 
-
-        //----------------------------------------
-    // MÉTODO PARA OBTENER TODOS LOS PROYECTOS (GET)
-    //----------------------------------------
+// Funcion API para obtener todos los proyectos (GET)
     public function get()
     {
         $proyectos = Proyecto::all();
@@ -30,9 +14,7 @@ class ProyectoControllerApi extends Controller
     }
 
 
-    //----------------------------------------
-    // MÉTODO PARA OBTENER UN PROYECTO POR ID (GET)
-    //----------------------------------------
+// Funcion API para obtener proyecto por ID (GET)
     public function getById($id)
     {
         $proyecto = Proyecto::find($id);
@@ -43,9 +25,8 @@ class ProyectoControllerApi extends Controller
         }
     }
 
-    //----------------------------------------
-// MÉTODO PARA CREAR UN NUEVO PROYECTO (POST) Y DEVOLVER EL JSON DEL PROYECTO CREADO
-//----------------------------------------
+
+// Funcion API para crear un nuevo proyecto (POST) y devolver el JSON del proyecto creado
     public function post(Request $request)
     {
         // Validar los datos de entrada
@@ -63,11 +44,9 @@ class ProyectoControllerApi extends Controller
         // Devolver el proyecto recién creado en formato JSON
         return response()->json($proyecto, 201);
     }
-//----------------------------------------
 
-    //----------------------------------------
-    // MÉTODO PARA ACTUALIZAR UN PROYECTO (PATCH)
-    //----------------------------------------
+
+// Funcion API para actualizar un proyecto (PATCH)
     public function update(Request $request, $id)
     {
         $proyecto = Proyecto::find($id);
@@ -91,9 +70,8 @@ class ProyectoControllerApi extends Controller
         return response()->json($proyecto, 200);
     }
 
-    //----------------------------------------
-    // MÉTODO PARA ELIMINAR UN PROYECTO (DELETE)
-    //----------------------------------------
+
+// Funcion API para eliminar un proyecto (DELETE)
     public function delete($id)
     {
         $proyecto = Proyecto::find($id);
