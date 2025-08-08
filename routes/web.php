@@ -8,7 +8,7 @@ use App\Http\Controllers\ProyectoController;
 //http://localhost:8000/proyectos
 
 
-// Ruta web para la página de inicio, redirige a la lista de proyectos
+// Ruta web HOME, redirige a la lista de proyectos (GET)
 Route::get('/', function () {
     return redirect('/proyectos');
 });
