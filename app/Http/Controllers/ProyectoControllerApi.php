@@ -2,12 +2,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Proyecto;
+use Illuminate\Http\JsonResponse;
 
 class ProyectoControllerApi extends Controller
 {
 
 // Funcion API para obtener todos los proyectos (GET)
-    public function get()
+    public function get(): JsonResponse
     {
         $proyectos = Proyecto::all();
         return response()->json($proyectos, 200);
@@ -15,7 +16,7 @@ class ProyectoControllerApi extends Controller
 
 
 // Funcion API para obtener proyecto por ID (GET)
-    public function getById($id)
+    public function getById($id): JsonResponse
     {
         $proyecto = Proyecto::find($id);
         if ($proyecto) {
@@ -27,7 +28,7 @@ class ProyectoControllerApi extends Controller
 
 
 // Funcion API para crear un nuevo proyecto (POST) y devolver el JSON del proyecto creado
-    public function post(Request $request)
+    public function post(Request $request): JsonResponse
     {
         // Validar los datos de entrada
         $validatedData = $request->validate([
@@ -47,7 +48,7 @@ class ProyectoControllerApi extends Controller
 
 
 // Funcion API para actualizar un proyecto (PATCH)
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): JsonResponse
     {
         $proyecto = Proyecto::find($id);
         if (!$proyecto) {
@@ -72,7 +73,7 @@ class ProyectoControllerApi extends Controller
 
 
 // Funcion API para eliminar un proyecto (DELETE)
-    public function delete($id)
+    public function delete($id): JsonResponse
     {
         $proyecto = Proyecto::find($id);
         if (!$proyecto) {
