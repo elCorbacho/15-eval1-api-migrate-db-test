@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\AuthController;
 
 
 //http://localhost/15-eval1-api-migrate-db-test/public/proyectos
@@ -12,7 +13,6 @@ use App\Http\Controllers\ProyectoController;
 Route::get('/', function () {
     return redirect('/proyectos');
 });
-
 
 
 // Ruta para listar todos los proyectos con GET
@@ -64,12 +64,22 @@ Route::post('/proyectos/eliminar', [ProyectoController::class, 'delete']);
 
 
 
-// Ruta para mostrar el formulario de inicio de sesión de usuario
+//-----------------------------------------------------------------------------
+
+//MANEJO DE RUTAS WEB PARA AUTH (LOGIN y REGISTER)
+
+    // Ruta para mostrar el formulario de inicio de sesión de usuario
 Route::get('/login', function () {
-    return view('login');
+        return view('login');
 });
 
-// Ruta para mostrar el formulario de registro de usuario
+    // Ruta para procesar el inicio de sesión (POST)
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+    // Ruta para mostrar el formulario de registro de usuario
 Route::get('/register', function () {
     return view('register');
 });
+
+    // Ruta para procesar el registro de usuario (POST)
+Route::post('/register', [AuthController::class, 'register'])->name('register');

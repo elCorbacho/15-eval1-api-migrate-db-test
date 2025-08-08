@@ -43,7 +43,7 @@ class AuthController extends Controller
         return response()->json(['token' => $token]);
     }
 
-    // Funcion para obtener el perfil del usuario autenticado
+    /*// Funcion para obtener el perfil del usuario autenticado
     public function perfil()
     {
         return response()->json(auth()->user());
@@ -54,5 +54,5 @@ class AuthController extends Controller
     {
         auth()->logout();
         return response()->json(['message' => 'Sesión cerrada']);
-    }
+    }*/
 }

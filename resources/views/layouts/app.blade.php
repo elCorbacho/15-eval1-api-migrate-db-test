@@ -12,11 +12,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 <body class="bg-light">
+
+
     <header class="bg-primary py-4 shadow">
         <div class="container">
             <h1 class="text-white fw-bold m-0 text-center" style="letter-spacing:2px;">PROYECTOS IT</h1>
         </div>
     </header>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +41,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if(Request::is('proyectos/editar') || Request::is('proyectos/editar/*')) active fw-bold @endif" href="{{ url('/proyectos/editar') }}">Editar Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(Request::is('login')) active fw-bold @endif" href="{{ url('/login') }}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(Request::is('register')) active fw-bold @endif" href="{{ url('/register') }}">Registrar Usuario</a>
                     </li>
                 </ul>
             </div>
