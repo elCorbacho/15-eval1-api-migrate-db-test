@@ -32,7 +32,7 @@ class AuthController extends Controller
 
     
     // Funcion para iniciar sesión y devolver el token JWT
-    public function login(Request $request)
+    /* public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -41,7 +41,31 @@ class AuthController extends Controller
         }
 
         return response()->json(['token' => $token]);
+    }*/
+
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (!$token = JWTAuth::attempt($credentials)) {
+            // Si espera JSON (API/Postman)
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Credenciales inválidas'], 401);
+            }
+            // Si es desde web
+            return back()->with('error', 'Credenciales inválidas');
+        }
+
+        // Si espera JSON (API/Postman)
+        if ($request->expectsJson()) {
+            return response()->json(['token' => $token]);
+        }
+
+        // Si es desde web
+        return redirect()->back()->with('success', 'Login exitoso. Token: ' . $token);
     }
+    
 
     /*// Funcion para obtener el perfil del usuario autenticado
     public function perfil()
