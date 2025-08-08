@@ -63,3 +63,13 @@ Route::get('/proyectos/eliminar', function() {
 Route::post('/proyectos/eliminar', [ProyectoController::class, 'delete']);
 
 
+
+// Ruta para mostrar el formulario de inicio de sesión de usuario
+Route::get('/login', function () {
+    return view('login');
+});
+
+// Ruta para mostrar el formulario de registro de usuario
+Route::get('/register', function () {
+    return view('register');
+});
