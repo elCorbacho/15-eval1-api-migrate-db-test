@@ -30,6 +30,7 @@ class AuthController extends Controller
     }
 
 
+    
     // Funcion para iniciar sesión y devolver el token JWT
     public function login(Request $request)
     {

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProyectoControllerApi;
 use App\Http\Controllers\AuthController;
 
+
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
 //})->middleware('auth:sanctum');
@@ -18,9 +19,14 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
+//PROTECCION DE RUTAS CON MIDDLEWARE JWT
+Route::middleware(['auth:api'])->group(function () {
+
 // Rutas API para proyectos
-Route::get('/proyectosAPI', [ProyectoControllerApi::class, 'get']);
-Route::get('/proyectosAPI/{id}', [ProyectoControllerApi::class, 'getById']);
-Route::post('/proyectosAPI', [ProyectoControllerApi::class, 'post']);
-Route::patch('/proyectosAPI/{id}', [ProyectoControllerApi::class, 'update']);
-Route::delete('/proyectosAPI/{id}', [ProyectoControllerApi::class, 'delete']);
+    Route::get('/proyectosAPI', [ProyectoControllerApi::class, 'get']);
+    Route::get('/proyectosAPI/{id}', [ProyectoControllerApi::class, 'getById']);
+    Route::post('/proyectosAPI', [ProyectoControllerApi::class, 'post']);
+    Route::patch('/proyectosAPI/{id}', [ProyectoControllerApi::class, 'update']);
+    Route::delete('/proyectosAPI/{id}', [ProyectoControllerApi::class, 'delete']);
+
+});
