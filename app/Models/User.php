@@ -6,14 +6,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * permiten que los campos sean asignados en masa.
      *
      * @var list<string>
      */
@@ -24,7 +25,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * permiten que los campos sean ocultados en las respuestas JSON.
      *
      * @var list<string>
      */
@@ -34,7 +35,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * permiten que los campos sean convertidos a tipos específicos.
      *
      * @return array<string, string>
      */
@@ -45,4 +46,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * COMPONENTES QUE PERMITEN LA AUTENTICACIÓN JWT
+     *
+     * @return string
+     */
+
+    //funcion para obtener el identificador que se almacenará en el reclamo del sujeto del JWT.
+    public function getJWTIdentifier(): string
+    {
+        return (string) $this->getKey();
+    }
+
+    //función para obtener las reclamaciones personalizadas del JWT.
+    public function getJWTCustomClaims(): array
+    {
+        return [];
+    }
+
+
 }
