@@ -44,25 +44,22 @@ class AuthController extends Controller
     }*/
 
 
-    public function login(Request $request)
+    public function loginApi(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         if (!$token = JWTAuth::attempt($credentials)) {
-            // Si espera JSON (API/Postman)
-            if ($request->expectsJson()) {
-                return response()->json(['error' => 'Credenciales inválidas'], 401);
-            }
-            // Si es desde web
+            return response()->json(['error' => 'Credenciales inválidas'], 401);
+        }
+        return response()->json(['token' => $token]);
+    }
+
+    // Login para web
+    public function loginWeb(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (!$token = JWTAuth::attempt($credentials)) {
             return back()->with('error', 'Credenciales inválidas');
         }
-
-        // Si espera JSON (API/Postman)
-        if ($request->expectsJson()) {
-            return response()->json(['token' => $token]);
-        }
-
-        // Si es desde web
         return redirect()->back()->with('success', 'Login exitoso. Token: ' . $token);
     }
     

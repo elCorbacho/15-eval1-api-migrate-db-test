@@ -74,7 +74,7 @@ Route::get('/login', function () {
 });
 
     // Ruta para procesar el inicio de sesión (POST)
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginWeb'])->name('login');
 
     // Ruta para mostrar el formulario de registro de usuario
 Route::get('/register', function () {

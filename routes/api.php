@@ -12,7 +12,7 @@ use App\Http\Controllers\AuthController;
 
 
 //RUTA LOG IN
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'loginApi']);
 
 
 //RUTA REGISTRO
