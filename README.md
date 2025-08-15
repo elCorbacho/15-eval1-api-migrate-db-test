@@ -132,4 +132,3 @@ Accede a la aplicación en [http://localhost:8000/proyectos](http://localhost:80
 - `routes/web.php` — Rutas web (vistas y formularios)
 - `routes/api.php` — Rutas API (JSON y JWT)
 ---
-¿Dudas o problemas? Revisa el archivo `storage/logs/laravel.log` para errores.
