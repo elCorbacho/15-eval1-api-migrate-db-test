@@ -72,3 +72,6 @@ Accede a la aplicación en [http://localhost:8000/proyectos](http://localhost:80
 | **POST**   | `/login`                    | Procesar inicio de sesión             |
 | **GET**    | `/register`                 | Formulario de registro de usuario     |
 | **POST**   | `/register`                 | Procesar registro de usuario          |
+
+
+....
